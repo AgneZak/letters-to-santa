@@ -16,9 +16,10 @@ class Navigation extends \Core\View
         $nav = ['/index.php' => 'All Wishes'];
 
         if (App::$session->getUser()) {
-            if (App::$session->getUser()['email'] === 'santa@santa.lt'){
+            if (App::$session->getUser()['email'] === 'santa@santa.lt') {
 
                 return $nav + [
+                        '/messages.php' => 'Messages',
                         '/logout.php' => 'Logout',
                     ];
 
