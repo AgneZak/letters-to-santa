@@ -15,11 +15,19 @@
                     <p><?php print $wish['price']; ?> $</p>
                 </div>
 
+            <?php elseif ($wish['option'] == 'public'): ?>
+
+                <div class="grid-item">
+                    <?php if ($wish['url'] != ''): ?>
+                        <img class="product-img" src="<?php print $wish['url']; ?>" alt="">
+                    <?php endif; ?>
+                    <p><?php print $wish['wish']; ?></p>
+                    <p><?php print $wish['price']; ?> $</p>
+                </div>
+
             <?php endif; ?>
 
-        <?php endif; ?>
-
-        <?php if ($wish['option'] == 'public'): ?>
+        <?php elseif ($wish['option'] == 'public'): ?>
 
             <div class="grid-item">
                 <?php if ($wish['url'] != ''): ?>
