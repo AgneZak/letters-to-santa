@@ -31,10 +31,10 @@ class MessagesController extends AuthController
                 $this->page->setContent($table->render());
 
                 return $this->page->render();
+            } else {
+                header("Location: /login.php");
+                exit();
             }
-        } else {
-            header("Location: /login.php");
-            exit();
         }
     }
 
