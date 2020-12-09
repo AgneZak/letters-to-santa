@@ -2,7 +2,7 @@
 <h3 class="header"><?php print $data['heading']; ?></h3>
 <section class="grid-container">
 
-    <?php foreach ($data['items'] as $wish): ?>
+    <?php foreach ($data['items'] as $id => $wish): ?>
         <?php if (App\App::$session->getUser()): ?>
 
             <?php if (App\App::$session->getUser()['email'] === 'santa@santa.lt') : ?>
@@ -13,6 +13,14 @@
                     <?php endif; ?>
                     <p><?php print $wish['wish']; ?></p>
                     <p><?php print $wish['price']; ?> $</p>
+
+                    <?php if ($wish['fulfilled'] === 'false') : ?>
+                        <form method="POST">
+                            <input type="hidden" name="id" value="<?php print $id; ?>">
+                            <button type="submit">Fulfill</button>
+                        </form>
+                    <?php endif; ?>
+
                 </div>
 
             <?php elseif ($wish['option'] == 'public'): ?>
@@ -23,6 +31,7 @@
                     <?php endif; ?>
                     <p><?php print $wish['wish']; ?></p>
                     <p><?php print $wish['price']; ?> $</p>
+                    <p>Fulfilled: <?php print $wish['fulfilled']; ?></p>
                 </div>
 
             <?php endif; ?>
@@ -35,6 +44,7 @@
                 <?php endif; ?>
                 <p><?php print $wish['wish']; ?></p>
                 <p><?php print $wish['price']; ?> $</p>
+                <p>Fulfilled: <?php print $wish['fulfilled']; ?></p>
             </div>
 
         <?php endif; ?>

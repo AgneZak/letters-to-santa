@@ -35,13 +35,17 @@ class EditController extends AuthController
 
         $row = (App::$db->getRowById('wishes', $row_id));
         unset($row['email']);
+        unset($row['fulfilled']);
 
         $this->form->fill($row);
 
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
 
-            App::$db->updateRow('wishes', $row_id, $clean_inputs + ['email' => $_SESSION['email']]);
+            App::$db->updateRow('wishes', $row_id, $clean_inputs + [
+                    'email' => $_SESSION['email'],
+                    'fulfilled' => 'false'
+                ]);
 
             $p = 'You edited the item';
         }

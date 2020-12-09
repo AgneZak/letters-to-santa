@@ -26,6 +26,7 @@ class ProductsTable extends Table
 
             $deleteForm = new DeleteForm($id);
             $rows[$id]['delete'] = $deleteForm->render();
+
         }
 
         parent::__construct([
@@ -33,7 +34,8 @@ class ProductsTable extends Table
                 'Wish',
                 'Is it public',
                 'Price',
-                'Image url'
+                'Image url',
+                'Fulfilment'
             ],
             'rows' => $rows
         ]);

@@ -66,6 +66,16 @@ class HomeController extends Controller
             $h3 = 'Jus neprisijunges';
         }
 
+        if (isset($_POST['id'])) {
+            $rows = App::$db->getRowsWhere('wishes');
+            foreach ($rows ?? [] as $key => $wish) {
+                if ($key == $_POST['id']) {
+                    $wish['fulfilled'] = 'true';
+                    App::$db->updateRow('wishes', $key, $wish);
+                }
+            }
+        }
+
         $content = new View([
             'title' => 'Letters to Santa',
             'heading' => $h3,
@@ -73,6 +83,7 @@ class HomeController extends Controller
         ]);
 
         $this->page->setContent($content->render(ROOT . '/app/templates/content/index.tpl.php'));
+
 
         return $this->page->render();
     }

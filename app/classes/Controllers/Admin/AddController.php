@@ -26,10 +26,26 @@ class AddController extends AuthController
     {
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
+            $wishes = App::$db->getRowsWhere('wishes');
+            $wish_count = 0;
 
-            App::$db->insertRow('wishes', $clean_inputs + ['email' => $_SESSION['email']]);
+            foreach ($wishes as $wish) {
+                if ($_SESSION['email'] === $wish['email']) {
+                    $wish_count++;
+                }
+            }
 
-            $p = 'You added an item';
+            if ($wish_count < 3) {
+                App::$db->insertRow('wishes', $clean_inputs + [
+                        'email' => $_SESSION['email'],
+                        'fulfilled' => 'false'
+                    ]);
+
+                $p = 'You added an item';
+            } else {
+                $p = 'You cant add anymore wishes';
+            }
+
         }
 
         $content = new View([
