@@ -41,7 +41,7 @@ class AddController extends AuthController
                         'fulfilled' => 'false'
                     ]);
 
-                $p = 'You added an item';
+                $p = 'You added a wish';
             } else {
                 $p = 'You cant add anymore wishes';
             }
