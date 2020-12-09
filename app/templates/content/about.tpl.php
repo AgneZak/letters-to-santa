@@ -20,5 +20,14 @@
 <div class="contact-container">
     <p>Address: <?php print $data['address']; ?></p>
     <p>Email: <?php print $data['email']; ?></p>
+
+    <?php print $data['form']; ?>
+
+
+    <?php if (isset ($data['message'])): ?>
+
+        <p><?php print $data['message']; ?></p>
+
+    <?php endif; ?>
 </div>
 
