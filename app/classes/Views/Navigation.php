@@ -19,7 +19,7 @@ class Navigation extends \Core\View
             if (App::$session->getUser()['email'] === 'santa@santa.lt') {
 
                 return $nav + [
-                        '/messages.php' => 'Messages',
+                        '/admin/messages.php' => 'Messages',
                         '/logout.php' => 'Logout',
                     ];
 
