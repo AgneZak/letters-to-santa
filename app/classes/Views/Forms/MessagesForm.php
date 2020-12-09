@@ -37,7 +37,7 @@ class MessagesForm extends Form
             ],
             'buttons' => [
                 'submit' => [
-                    'title' => 'Message',
+                    'title' => 'Message Santa',
                     'type' => 'submit',
                     'extra' => [
                         'attr' => [
