@@ -12,5 +12,7 @@ App::$db->insertRow('users', ['email' => 'test@test.lt', 'password' => 'test']);
 App::$db->insertRow('users', ['email' => 'santa@santa.lt', 'password' => 'santa']);
 
 App::$db->createTable('wishes');
+App::$db->createTable('messages');
+
 App::$db->createTable('track_users');
 
